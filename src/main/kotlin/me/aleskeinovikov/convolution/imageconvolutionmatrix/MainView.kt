@@ -17,23 +17,28 @@ class MainView : View("Image Convolution Matrix") {
         hbox {
             val imageView = imageview {
             }
-            button("Open image") {
-                setOnMouseClicked {
-                    fileChooser.showOpenDialog(this@MainView.currentWindow)?.let {
-                        val url = it.toURI().toURL()
-                        imageView.image = Image(url.toString())
-                        imageView.autoScale()
+            vbox {
+                button("Open image") {
+                    setOnMouseClicked {
+                        fileChooser.showOpenDialog(this@MainView.currentWindow)?.let {
+                            val url = it.toURI().toURL()
+                            imageView.image = Image(url.toString())
+                            imageView.autoScale()
+                        }
                     }
                 }
+
+                textfield {
+                    maxWidth = 10.0
+                    filterInput { it.controlNewText.isDouble() }
+                }
             }
-        }
-
-        hbox {
-
         }
     }
 
     private fun ImageView.autoScale() {
-        this.fitWidth = 400.0
+        isPreserveRatio = true
+        fitHeight = 500.0
+        fitWidth = 600.0
     }
 }

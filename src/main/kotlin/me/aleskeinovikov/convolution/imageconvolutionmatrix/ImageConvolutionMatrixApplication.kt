@@ -1,6 +1,7 @@
 package me.aleskeinovikov.convolution.imageconvolutionmatrix
 
 import javafx.application.Application
+import javafx.stage.Stage
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.ConfigurableApplicationContext
@@ -22,6 +23,13 @@ class ImageConvolutionMatrixApplication : App(MainView::class) {
 			override fun <T : Any> getInstance(type: KClass<T>): T = context.getBean(type.java)
 			override fun <T : Any> getInstance(type: KClass<T>, name: String): T = context.getBean(name, type.java)
 		}
+	}
+
+	override fun start(stage: Stage) {
+		super.start(stage)
+
+		stage.width = 800.0
+		stage.height = 600.0
 	}
 
 	override fun stop() {
